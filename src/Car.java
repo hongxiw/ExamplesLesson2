@@ -1,5 +1,5 @@
 public class Car {
-    private final String model;
+    private final String MODEL;
     private final int YEAR;
     private int seats;
     private double gas;
@@ -7,7 +7,7 @@ public class Car {
     private double lastWarningDistance;
 
     public Car(String model, int year, int seats) {
-        this.model = model;
+        MODEL = model;
         YEAR = year;
         this.seats = seats;
         gas = 0;
@@ -16,7 +16,7 @@ public class Car {
     }
 
     public String getModel() {
-        return model;
+        return MODEL;
     }
 
     public int getYear() {
