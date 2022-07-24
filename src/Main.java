@@ -1,15 +1,13 @@
 public class Main {
 
     public static void main(String[] args) {
-        /*String name1 = "Bob";
-        String name2 = new String("Bob");
-        //string literal is the quotation mark
-        System.out.println(name1);
-        System.out.println(name2);
-       */
-
-        String s1 = "Good";
-        String s2 = "Morning";
-        String s3 =  "!";
+        Car car = new Car("Prius", 2020, 5);
+        car.refuel(100);
+        car.drive(1);
+        car.drive(7);
+        car.drive(2);
+        car.drive(24);
+        car.drive(8);
     }
+
 }

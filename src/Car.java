@@ -1,24 +1,26 @@
 public class Car {
-    private String carModel;
-    private int year;
+    private final String model;
+    private final int YEAR;
     private int seats;
-    private double galOfGas;
+    private double gas;
     private double miles;
+    private double lastWarningDistance;
 
-    public String getCarModel() {
-        return carModel;
+    public Car(String model, int year, int seats) {
+        this.model = model;
+        YEAR = year;
+        this.seats = seats;
+        gas = 0;
+        miles = 0;
+        lastWarningDistance = 0;
     }
 
-    public void setCarModel(String carModel) {
-        this.carModel = carModel;
+    public String getModel() {
+        return model;
     }
 
     public int getYear() {
-        return year;
-    }
-
-    public void setYear(int year) {
-        this.year = year;
+        return YEAR;
     }
 
     public int getSeats() {
@@ -29,16 +31,44 @@ public class Car {
         this.seats = seats;
     }
 
+    public double getGas() {
+        return gas;
+    }
+
+    public void setGas(double gas) {
+        this.gas = gas;
+    }
+
+    public double getMiles() {
+        return miles;
+    }
+
+
     public void drive(double miles) {
-        this.miles += miles;
-        System.out.println("The car drove " + miles + " and the car drove the total of" + this.miles);
+        if(gas <= 0) {
+            System.out.println("The car is out of gas! Please refuel it!");
+            return;
+        }
+        double gallonsRequired = miles / 10, milesDriven = miles;
+        if(gas - gallonsRequired < 0) {
+            milesDriven = gas * 10;
+            gallonsRequired = milesDriven / 10;
+            System.out.println("The car did not have enough gas to drive the entire " + miles + " miles");
+        }
+        this.miles += milesDriven;
+        System.out.println("The car drove " + milesDriven + " miles.\nThe car now has driven a total of " + this.miles + " miles");
+        gas -= gallonsRequired;
+        double milesSinceLastWarning = this.miles - lastWarningDistance;
+        if(milesSinceLastWarning >= 10) {
+            int roundedMilesDriven = (int) milesSinceLastWarning / 10 * 10;
+            System.out.println("The car has driven over " + roundedMilesDriven + " miles since the last warning. It has lost about " + roundedMilesDriven / 10 + " gallons of gas and now has " + gas + " gallons remaining");
+            lastWarningDistance += roundedMilesDriven;
+        }
     }
 
-    public void refuel(double galsOfGas) {
-        this.galOfGas += galsOfGas;
-        System.out.println("The amount of gas refueled is " + galsOfGas + " The total amount of gas is " + this.galOfGas);
+    public void refuel(double addGas) {
+        gas += addGas;
+        System.out.println("The car refueled with " + addGas + " gallons of gas.\nThe tank now contains " + gas + " gallons");
     }
-
 
 }
-
