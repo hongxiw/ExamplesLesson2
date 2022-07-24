@@ -71,4 +71,8 @@ public class Car {
         System.out.println("The car refueled with " + addGas + " gallons of gas.\nThe tank now contains " + gas + " gallons");
     }
 
+    public String toString() {
+        return "This car is a " + seats + "-seat " + MODEL + " built in " + YEAR + ".\nIt has driven " + miles + " miles.\nIt currently has " + gas + " gallons of gas";
+    }
+
 }

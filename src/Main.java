@@ -8,6 +8,7 @@ public class Main {
         car.drive(2);
         car.drive(24);
         car.drive(8);
+        System.out.println(car);
     }
 
 }
